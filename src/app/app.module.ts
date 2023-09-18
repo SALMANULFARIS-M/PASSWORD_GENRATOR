@@ -6,21 +6,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PasswordGeneratorComponent } from './components/password-generator/password-generator.component';
 import { FormsModule } from '@angular/forms';
-import { SearchPipe } from './search.pipe';
-
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
     AppComponent,
     PasswordGeneratorComponent,
-    SearchPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
-  ],schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+    FormsModule,
+    ClipboardModule,
+  ], schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

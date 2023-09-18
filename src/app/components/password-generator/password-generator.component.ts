@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-password-generator',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasswordGeneratorComponent implements OnInit {
 
+  constructor(private clipboard: ClipboardService) { }
+
   password: string = '';
   message: string = '';
   passwordLength: number = 1;
@@ -14,6 +17,7 @@ export class PasswordGeneratorComponent implements OnInit {
   includeLowercase!: boolean;
   includeNumbers!: boolean;
   includeSpecialChars!: boolean;
+  showTooltip: boolean = false;
 
   ngOnInit(): void {
 
@@ -63,5 +67,12 @@ export class PasswordGeneratorComponent implements OnInit {
     } else {
       this.password = 'Minimum lenghth is 1'
     }
+  }
+  copyText(text: string) {
+    this.clipboard.copyFromContent(text);
+    this.showTooltip = true;
+    setTimeout(() => {
+      this.showTooltip = false;
+    }, 2000);
   }
 }
